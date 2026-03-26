@@ -70,8 +70,8 @@ nav a.nav-home {
     float: left;
 }
 main {
-    margin: 20px;
-    padding: 20px;
+    margin: 20px 20px 20px 15px;
+    padding: 20px 20px 40px 0;
     flex: 1;
     padding-bottom: 40px;
     display: flex;
@@ -90,6 +90,7 @@ main {
 }
 .about-text p {
     margin-bottom: 15px;
+    margin: 20px 20px 20px 15px;
 }
 .profile-pic {
     width: 500px;

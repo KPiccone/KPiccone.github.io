@@ -26,7 +26,8 @@ async function getQuote() {
     }   
     function displayQuote(quote) {
         const quoteText = document.querySelector("#js-quote-text");
-        quoteText.textContent=  quote;
+        quoteText.textContent =  quote;
+        answerText.textContent = "";
     }
     function showAnswer() {
         answerText.textContent = current.answer;

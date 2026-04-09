@@ -61,9 +61,25 @@ class Ball {
         const dx = this.x - ball.x;
         const dy = this.y - ball.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
- 
+
         if (distance < this.size + ball.size) {
-          ball.color = this.color = randomRGB();
+          const nx = dx / distance;
+          const ny = dy / distance;
+
+          const relVel = (this.velX - ball.velX) * nx + (this.velY - ball.velY) * ny;
+
+          if (relVel < 0) {
+            this.velX -= relVel * nx;
+            this.velY -= relVel * ny;
+            ball.velX += relVel * nx;
+            ball.velY += relVel * ny;
+
+            const overlap = (this.size + ball.size - distance) / 2;
+            this.x += nx * overlap;
+            this.y += ny * overlap;
+            ball.x -= nx * overlap;
+            ball.y -= ny * overlap;
+          }
         }
       }
     }

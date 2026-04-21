@@ -1,0 +1,9 @@
+const plate = document.getElementById('rotary-plate');
+const totalDisplay = document.getElementById('current-total');
+const cradle = document.getElementById('receiver-cradle');
+
+let currentVolume = 0;
+let isDragging = false;
+let startAngle = 0;
+let currentRotation = 0;
+let activeNumber = 0;

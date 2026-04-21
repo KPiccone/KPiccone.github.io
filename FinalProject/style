@@ -1,0 +1,11 @@
+:root {
+    --phone-bg-main: #e0f7fa;
+    --phone-accent: #ffffff;
+    --dial-plate-bg: #81d4fa;
+    --metal-details: #b0bec5;
+    --text-primary: #0277bd;
+    --display-bg: #ffffff;
+    --display-num: #01579b;
+    --confirm-bg: #4fc3f7;
+    --shadow-soft: rgba(2, 119, 189, 0.2);
+}

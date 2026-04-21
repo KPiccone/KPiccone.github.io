@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
+
+/* Variables */
+:root {
+  --blue-dark:  #0d1b3e;
+  --blue-mid:   #1a4fa3;
+  --blue-light: #5b9ef7;
+  --blue-glow:  #3b82f6;
+  --accent:     #00d4ff;
+  --danger:     #ff4444;
+  --text:       #c8e0ff;
+  --text-dim:   #5a7aaa;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body */
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-dark);
+  background-image:
+    linear-gradient(rgba(91, 159, 247, 0.523) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91,158,247,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Layout */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+/*Title */
+.title {
+  font-family: 'VT323', monospace;
+  font-size: 3.2rem;
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent), 0 0 40px var(--blue-glow);
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/*  Phone container */
+.phone-container {
+  position: relative;
+  width: 360px;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Phone SVG */
+.phone-svg {
+  width: 100%;
+  filter:
+    drop-shadow(0 0 18px rgba(59,130,246,0.6))
+    drop-shadow(0 0 40px rgba(0,212,255,0.2));
+  transition: filter 0.3s;
+}
+
+.phone-svg.ringing {
+  animation: ring 0.3s infinite alternate;
+}
+
+/* SVG element classes */
+.phone-fill { fill: var(--blue-mid); }
+.phone-gap  { fill: var(--blue-dark); }
+.dial-hole  {
+  fill: white;
+  cursor: grab;
+  transition: fill 0.15s;
+}
+.dial-hole:hover          { fill: var(--accent); }
+.dial-hole.active         { fill: var(--accent); cursor: grabbing; }
+.dial-hole.adding         { fill: #44ff88; }
+.dial-hole.subtracting    { fill: var(--danger); }
+
+.dial-num {
+  fill: var(--blue-dark);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.dial-label {
+  fill: white;
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.finger-stop {
+  fill: none;
+  stroke: var(--blue-mid);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.handset-curve {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Dial group rotation */
+#dialGroup {
+  transform-origin: 242px 270px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#dialGroup.snap-back {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Volume display */
+.volume-display {
+  position: absolute;
+  top: 60%;
+  left: 49%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.volume-label {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 4px;
+  opacity: 0.8;
+}
+
+.volume-number {
+  font-family: 'VT323', monospace;
+  font-size: 3.5rem;
+  color: white;
+  text-shadow: 0 0 12px var(--accent);
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+/* Status message */
+.status-msg {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-align: center;
+  min-height: 1.2em;
+  transition: color 0.2s;
+}
+
+.status-msg.good { color: var(--accent); }
+.status-msg.bad  { color: var(--danger); }
+.status-msg.warn { color: #ffaa00; }
+
+/* Volume bar */
+.vol-bar-wrap {
+  position: relative;
+  width: 100%;
+  height: 28px;
+  background: rgba(26,79,163,0.2);
+  border: 1px solid rgba(91,158,247,0.3);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.vol-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue-glow), var(--accent));
+  border-radius: 6px;
+  box-shadow: 0 0 10px var(--accent);
+  transition: width 0.3s ease, background 0.3s;
+}
+
+.vol-bar-fill.danger {
+  background: linear-gradient(90deg, #ff6600, var(--danger));
+  box-shadow: 0 0 14px var(--danger);
+}
+
+.vol-bar-label {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+/*Animations */
+@keyframes ring {
+  from { transform: rotate(-3deg); }
+  to   { transform: rotate( 3deg); }
+}
+
+@keyframes popVol {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  50%  { transform: translate(-50%, -50%) scale(1.3); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.volume-display.pop {
+  animation: popVol 0.25s ease;
+}

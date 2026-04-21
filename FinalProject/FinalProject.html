@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annoying Volume</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <h1 class="title"> Annoying Volume</h1>
+    <p class="subtitle">Drag a number left to add, right to subtract. Release to confirm.</p>
+
+    <div class="phone-container" id="phoneContainer">
+
+      <svg class="phone-svg" id="phoneSvg" viewBox="0 0 500 460" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+
+          <mask id="bodyMask">
+            <rect width="500" height="460" fill="white"/>
+            <rect x="182" y="116" width="136" height="10" rx="2" fill="black"/>
+            <circle cx="242" cy="270" r="107" fill="black"/>
+            <circle cx="242" cy="270" r="88"  fill="white"/>
+            <circle cx="242" cy="270" r="56"  fill="black"/>
+            <circle cx="242" cy="270" r="44"  fill="white"/>
+            <circle cx="242" cy="196" r="13"  fill="black"/>
+            <circle cx="296" cy="207" r="13"  fill="black"/>
+            <circle cx="327" cy="252" r="13"  fill="black"/>
+            <circle cx="313" cy="308" r="13"  fill="black"/>
+            <circle cx="265" cy="338" r="13"  fill="black"/>
+            <circle cx="210" cy="335" r="13"  fill="black"/>
+            <circle cx="168" cy="304" r="13"  fill="black"/>
+            <circle cx="157" cy="252" r="13"  fill="black"/>
+            <circle cx="178" cy="203" r="13"  fill="black"/>
+          </mask>
+
+          <mask id="handsetMask">
+            <rect width="500" height="460" fill="white"/>
+            <rect x="30"  y="196" width="108" height="7" rx="3" fill="black"/>
+            <rect x="30"  y="216" width="108" height="7" rx="3" fill="black"/>
+            <rect x="362" y="196" width="108" height="7" rx="3" fill="black"/>
+            <rect x="362" y="216" width="108" height="7" rx="3" fill="black"/>
+          </mask>
+
+        </defs>
+
+        <!-- Base -->
+        <rect x="62" y="372" width="376" height="52" rx="12" class="phone-fill"/>
+        <rect x="62" y="368" width="376" height="6"  class="phone-gap"/>
+
+        <!-- Body -->
+        <path d="M 155,126 Q 155,118 162,115 L 322,115 Q 329,118 329,126 L 370,372 L 130,372 Z"
+              class="phone-fill" mask="url(#bodyMask)"/>
+
+        <!-- Left ear -->
+        <path d="M 88,150 Q 28,148 26,198 Q 24,245 88,242 L 155,230 L 180,126 L 155,120 Q 120,112 88,150 Z"
+              class="phone-fill" mask="url(#handsetMask)"/>
+
+        <!-- Right ear -->
+        <path d="M 412,150 Q 472,148 474,198 Q 476,245 412,242 L 345,230 L 320,126 L 345,120 Q 380,112 412,150 Z"
+              class="phone-fill" mask="url(#handsetMask)"/>
+
+        <!-- Handset bridge + cradle notch -->
+        <rect x="155" y="118" width="190" height="116" class="phone-fill"/>
+        <rect x="182" y="100" width="136" height="30"  rx="8" class="phone-fill"/>
+
+        <!-- Dial rings (static) -->
+        <circle cx="242" cy="270" r="107" class="phone-fill"/>
+        <circle cx="242" cy="270" r="88"  class="phone-gap"/>
+        <circle cx="242" cy="270" r="56"  class="phone-fill"/>
+        <circle cx="242" cy="270" r="44"  class="phone-gap"/>
+
+        <!-- Rotary dial group — this rotates -->
+        <g id="dialGroup">
+          <!-- Finger holes -->
+          <circle cx="242" cy="196" r="13" class="dial-hole" data-num="1"/>
+          <circle cx="296" cy="207" r="13" class="dial-hole" data-num="2"/>
+          <circle cx="327" cy="252" r="13" class="dial-hole" data-num="3"/>
+          <circle cx="313" cy="308" r="13" class="dial-hole" data-num="4"/>
+          <circle cx="265" cy="338" r="13" class="dial-hole" data-num="5"/>
+          <circle cx="210" cy="335" r="13" class="dial-hole" data-num="6"/>
+          <circle cx="168" cy="304" r="13" class="dial-hole" data-num="7"/>
+          <circle cx="157" cy="252" r="13" class="dial-hole" data-num="8"/>
+          <circle cx="178" cy="203" r="13" class="dial-hole" data-num="9"/>
+
+          <!-- Numbers -->
+          <text x="242" y="201" class="dial-num">1</text>
+          <text x="296" y="212" class="dial-num">2</text>
+          <text x="327" y="257" class="dial-num">3</text>
+          <text x="313" y="313" class="dial-num">4</text>
+          <text x="265" y="343" class="dial-num">5</text>
+          <text x="210" y="340" class="dial-num">6</text>
+          <text x="168" y="309" class="dial-num">7</text>
+          <text x="157" y="257" class="dial-num">8</text>
+          <text x="178" y="208" class="dial-num">9</text>
+        </g>
+
+        <!-- Finger stop (static, always on top) -->
+        <path d="M 322,295 Q 348,285 342,308 Q 336,326 318,322" class="finger-stop"/>
+
+        <!-- + / - labels -->
+        <text x="242" y="172" class="dial-label">+</text>
+        <text x="242" y="390" class="dial-label">−</text>
+
+        <!-- White curve: handset / body separator -->
+        <path d="M 143,200 Q 190,174 242,170 Q 294,174 357,200" class="handset-curve"/>
+
+        <!-- Ear gap lines -->
+        <rect x="30"  y="196" width="108" height="7" rx="3" class="phone-gap"/>
+        <rect x="30"  y="216" width="108" height="7" rx="3" class="phone-gap"/>
+        <rect x="362" y="196" width="108" height="7" rx="3" class="phone-gap"/>
+        <rect x="362" y="216" width="108" height="7" rx="3" class="phone-gap"/>
+
+      </svg>
+
+      <!-- Volume readout on dial hub -->
+      <div class="volume-display">
+        <div class="volume-label">VOL</div>
+        <div class="volume-number" id="volumeNumber">0</div>
+      </div>
+
+    </div>
+
+    <p class="status-msg" id="statusMsg">
+
+    <!-- Volume bar -->
+    <div class="vol-bar-wrap">
+      <div class="vol-bar-fill" id="volBarFill"></div>
+      <span class="vol-bar-label" id="volBarLabel">0%</span>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

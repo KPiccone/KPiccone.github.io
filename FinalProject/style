@@ -9,3 +9,13 @@
     --confirm-bg: #4fc3f7;
     --shadow-soft: rgba(2, 119, 189, 0.2);
 }
+body {
+    background-color: #f0faff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    user-select: none;
+}

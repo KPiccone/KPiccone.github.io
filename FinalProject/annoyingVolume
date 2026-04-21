@@ -15,6 +15,17 @@
         <div id="dial-container">
             <div class="sign-label" id="plus-sign">+</div>
             <div class="sign-label" id="minus-sign">-</div>
+            <div id="finger-stop"></div>
 
+            <div id="rotary-plate"></div>
+        </div>
+
+        <div id="volume-display">
+            <div id="volume-label">CURRENT VOLUME</div>
+            <div id="current-total">0</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

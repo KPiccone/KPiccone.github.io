@@ -2,14 +2,14 @@
 
 /* Variables */
 :root {
-  --blue-dark:  #0d1b3e;
-  --blue-mid:   #1a4fa3;
-  --blue-light: #5b9ef7;
-  --blue-glow:  #3b82f6;
-  --accent:     #00d4ff;
-  --danger:     #ff4444;
-  --text:       #c8e0ff;
-  --text-dim:   #5a7aaa;
+  --blue-dark:  #e8e5e0;
+  --blue-mid:   #c9b5a8;
+  --blue-light: #9b8577;
+  --blue-glow:  #7a6b60;
+  --accent:     #5a7a99;
+  --danger:     #c85a5a;
+  --text:       #4a5568;
+  --text-dim:   #8b95a3;
 }
 
 /* Reset */
